@@ -2,6 +2,13 @@
 
 A [TypeScript](https://www.typescriptlang.org/) wrapper for the [OpenWeather API](https://openweathermap.org/api).
 
+## Use
+
+## Endpoints
+- `getCurrentWeatherByCity`
+- `getCurrentWeatherByCoordinates`
+- `getForecastByCity`
+- `getForecastByCoordinates`
 
 ## Running This Code Locally
 - Download the repo
