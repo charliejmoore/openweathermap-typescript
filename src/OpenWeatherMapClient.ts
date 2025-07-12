@@ -9,6 +9,8 @@ import {
   GetForecastByCityOptions,
   getForecastByCoordinates,
   GetForecastByCoordinatesOptions,
+  getCurrentWeatherByZipCode,
+  GetCurrentWeatherByZipCodeOptions,
 } from './endpoints';
 
 export interface CreateOpenWeatherMapClientConfig {
@@ -40,6 +42,11 @@ export interface OpenWeatherMapClient {
     longitude: number,
     options?: GetForecastByCoordinatesOptions
   ): Promise<ForecastResponse>;
+
+  getCurrentWeatherByZipCode(
+    zipCode: string | number,
+    options?: GetCurrentWeatherByZipCodeOptions
+  ): Promise<CurrentWeatherResponse>;
 }
 
 /**
@@ -73,5 +80,7 @@ export function createOpenWeatherMapClient({
       getForecastByCity(city, apiKey, baseUrl, options),
     getForecastByCoordinates: (latitude, longitude, options) =>
       getForecastByCoordinates(latitude, longitude, apiKey, baseUrl, options),
+    getCurrentWeatherByZipCode: (zipCode, options) =>
+      getCurrentWeatherByZipCode(zipCode, apiKey, baseUrl, options),
   };
 }

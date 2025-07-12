@@ -7,6 +7,7 @@ A [TypeScript](https://www.typescriptlang.org/) wrapper for the [OpenWeather API
 ## Endpoints
 - `getCurrentWeatherByCity`
 - `getCurrentWeatherByCoordinates`
+- `getCurrentWeatherByZipCode`
 - `getForecastByCity`
 - `getForecastByCoordinates`
 

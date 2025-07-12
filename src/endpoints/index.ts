@@ -14,3 +14,7 @@ export {
   getForecastByCoordinates,
   GetForecastByCoordinatesOptions,
 } from './getForecastByCoordinates';
+export {
+  getCurrentWeatherByZipCode,
+  GetCurrentWeatherByZipCodeOptions,
+} from './getCurrentWeatherByZipCode';
