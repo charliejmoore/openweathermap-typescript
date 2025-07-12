@@ -19,6 +19,8 @@ export interface GetCurrentWeatherByCoordinatesOptions {
  * @param {string} apiKey - Your OpenWeatherMap API key.
  * @param {string} [baseUrl] - (Optional) API base URL (default: v2.5 endpoint)
  * @param {GetCurrentWeatherByCoordinatesOptions} [options] - Optional parameters (units, language).
+ * @param {WeatherUnits} [options.units] - (Optional) Units of measurement (default: 'standard').
+ * @param {string} [options.lang] - (Optional) You can use this parameter to get the output in your language.
  * @throws {Error} If OpenWeatherMap API returns an error response.
  * @returns {Promise<CurrentWeatherResponse>} The weather for the given coordinates.
  */
