@@ -5,9 +5,12 @@ A [TypeScript](https://www.typescriptlang.org/) wrapper for the [OpenWeather API
 ## Use
 
 ## Endpoints
+### Current Weather Data
 - `getCurrentWeatherByCity`
 - `getCurrentWeatherByCoordinates`
 - `getCurrentWeatherByZipCode`
+
+### Forecasted Weather Data
 - `getForecastByCity`
 - `getForecastByCoordinates`
 
