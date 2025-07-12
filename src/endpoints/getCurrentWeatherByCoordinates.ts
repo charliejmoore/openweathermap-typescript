@@ -3,11 +3,9 @@ import { CurrentWeatherResponse } from '../types/CurrentWeatherResponse';
 import { WeatherUnits } from '../types/shared/WeatherUnits';
 
 /**
- * Options for fetching current weather by city.
+ * Options for fetching current weather by geographic coordinates.
  */
-export interface GetCurrentWeatherByCityOptions {
-  /** Country code. See https://www.iso.org/obp/ui/#search for available country codes. */
-  country?: string;
+export interface GetCurrentWeatherByCoordinatesOptions {
   /** Units of measurement. */
   units?: WeatherUnits;
   /** You can use this parameter to get the output in your language. */
@@ -15,33 +13,29 @@ export interface GetCurrentWeatherByCityOptions {
 }
 
 /**
- * Fetches current weather data from OpenWeatherMap by city name.
- * @param {string} city - City name (e.g., "London").
+ * Fetches current weather data from OpenWeatherMap by geographic coordinates.
+ * @param {number} latitude - Latitude.
+ * @param {number} longitude - Longitude.
  * @param {string} apiKey - Your OpenWeatherMap API key.
- * @param {string} baseUrl - (Optional) API base URL (default: v2.5 endpoint)
- * @param {GetCurrentWeatherByCityOptions} options - (Optional) units, language, country code
- * @param {string} [options.country] - (Optional)
- * @param {WeatherUnits} [options.units] - (Optional) Units of measurement (default: 'standard').
- * @param {string} [options.lang] - (Optional) You can use this parameter to get the output in your language.
+ * @param {string} [baseUrl] - (Optional) API base URL (default: v2.5 endpoint)
+ * @param {GetCurrentWeatherByCoordinatesOptions} [options] - Optional parameters (units, language).
  * @throws {Error} If OpenWeatherMap API returns an error response.
- * @returns {WeatherResponse} The weather for the given city.
+ * @returns {Promise<CurrentWeatherResponse>} The weather for the given coordinates.
  */
-export async function getCurrentWeatherByCity(
-  city: string,
+export async function getCurrentWeatherByCoordinates(
+  latitude: number,
+  longitude: number,
   apiKey: string,
   baseUrl = BASE_OWM_API,
-  options: GetCurrentWeatherByCityOptions = {}
+  options: GetCurrentWeatherByCoordinatesOptions = {}
 ): Promise<CurrentWeatherResponse> {
-  let q: string = city;
-  if (options.country) {
-    q += `,${options.country}`;
-  }
-
   const params = new URLSearchParams({
-    q,
+    lat: latitude.toString(),
+    lon: longitude.toString(),
     appid: apiKey,
     units: options.units || 'standard',
   });
+
   if (options.lang) {
     params.append('lang', options.lang);
   }

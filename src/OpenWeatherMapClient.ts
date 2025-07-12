@@ -1,9 +1,15 @@
 import { BASE_OWM_API } from './constants';
+import { CurrentWeatherResponse, ForecastResponse } from './types';
 import {
-  getCurrentWeatherByCity,
+  getCurrentWeatherByCoordinates,
+  GetCurrentWeatherByCoordinatesOptions,
   GetCurrentWeatherByCityOptions,
-} from './endpoints/getCurrentWeatherByCity';
-import { CurrentWeatherResponse } from './types/CurrentWeatherResponse';
+  getCurrentWeatherByCity,
+  getForecastByCity,
+  GetForecastByCityOptions,
+  getForecastByCoordinates,
+  GetForecastByCoordinatesOptions,
+} from './endpoints';
 
 export interface CreateOpenWeatherMapClientConfig {
   /** Your OpenWeatherMap API key. */
@@ -17,6 +23,23 @@ export interface OpenWeatherMapClient {
     city: string,
     options?: GetCurrentWeatherByCityOptions
   ): Promise<CurrentWeatherResponse>;
+
+  getCurrentWeatherByCoordinates(
+    latitude: number,
+    longitude: number,
+    options?: GetCurrentWeatherByCoordinatesOptions
+  ): Promise<CurrentWeatherResponse>;
+
+  getForecastByCity(
+    city: string,
+    options?: GetForecastByCityOptions
+  ): Promise<ForecastResponse>;
+
+  getForecastByCoordinates(
+    latitude: number,
+    longitude: number,
+    options?: GetForecastByCoordinatesOptions
+  ): Promise<ForecastResponse>;
 }
 
 /**
@@ -38,5 +61,17 @@ export function createOpenWeatherMapClient({
   return {
     getCurrentWeatherByCity: (city, options) =>
       getCurrentWeatherByCity(city, apiKey, baseUrl, options),
+    getCurrentWeatherByCoordinates: (latitude, longitude, options) =>
+      getCurrentWeatherByCoordinates(
+        latitude,
+        longitude,
+        apiKey,
+        baseUrl,
+        options
+      ),
+    getForecastByCity: (city, options) =>
+      getForecastByCity(city, apiKey, baseUrl, options),
+    getForecastByCoordinates: (latitude, longitude, options) =>
+      getForecastByCoordinates(latitude, longitude, apiKey, baseUrl, options),
   };
 }
