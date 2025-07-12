@@ -12,7 +12,13 @@ const owm = createOpenWeatherMapClient({ apiKey });
 
 async function main() {
   const weather = await owm.getCurrentWeatherByCity('London');
-  console.log('Weather::', weather);
+  console.log('Current weather in London: ', weather);
+
+  const airPollution = await owm.getCurrentAirPollutionByCoordinates({
+    latitude: 51.509865,
+    longitude: -0.118092,
+  });
+  console.log('Current air pollution in London:', JSON.stringify(airPollution));
 }
 
 main().catch(console.error);

@@ -1,5 +1,9 @@
 import { BASE_OWM_API } from './constants';
-import { CurrentWeatherResponse, ForecastResponse } from './types';
+import {
+  AirPollutionResponse,
+  CurrentWeatherResponse,
+  ForecastResponse,
+} from './types';
 import {
   getCurrentWeatherByCoordinates,
   GetCurrentWeatherByCoordinatesOptions,
@@ -11,6 +15,8 @@ import {
   GetForecastByCoordinatesOptions,
   getCurrentWeatherByZipCode,
   GetCurrentWeatherByZipCodeOptions,
+  getCurrentAirPollutionByCoordinates,
+  getCurrentAirPollutionByCoordinatesOptions,
 } from './endpoints';
 
 export interface CreateOpenWeatherMapClientConfig {
@@ -47,6 +53,10 @@ export interface OpenWeatherMapClient {
     zipCode: string | number,
     options?: GetCurrentWeatherByZipCodeOptions
   ): Promise<CurrentWeatherResponse>;
+
+  getCurrentAirPollutionByCoordinates(
+    options: getCurrentAirPollutionByCoordinatesOptions
+  ): Promise<AirPollutionResponse>;
 }
 
 /**
@@ -82,5 +92,7 @@ export function createOpenWeatherMapClient({
       getForecastByCoordinates(latitude, longitude, apiKey, baseUrl, options),
     getCurrentWeatherByZipCode: (zipCode, options) =>
       getCurrentWeatherByZipCode(zipCode, apiKey, baseUrl, options),
+    getCurrentAirPollutionByCoordinates: (options) =>
+      getCurrentAirPollutionByCoordinates(options, apiKey, baseUrl),
   };
 }

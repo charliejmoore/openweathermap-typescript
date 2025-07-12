@@ -9,6 +9,7 @@ A [TypeScript](https://www.typescriptlang.org/) wrapper for the [OpenWeather API
 - `getCurrentWeatherByCity`
 - `getCurrentWeatherByCoordinates`
 - `getCurrentWeatherByZipCode`
+- `getCurrentAirPollutionByCoordinates`
 
 ### Forecasted Weather Data
 - `getForecastByCity`

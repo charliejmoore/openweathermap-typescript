@@ -5,3 +5,4 @@ export {
   ForecastResponse,
 } from './ForecastResponse';
 export * from './shared';
+export { AirPollutionResponse } from './AirPollutionResponse';
