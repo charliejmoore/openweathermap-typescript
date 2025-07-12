@@ -1,11 +1,10 @@
 {
   "cSpell.enabled": true,
   "cSpell.language": "en",
-  "cSpell.words": [
-    "OpenWeatherMap",
-  ],
-  "cSpell.ignorePaths": [
-    "dist/**",
-    "node_modules/**"
-  ]
+  "cSpell.words": ["OpenWeatherMap"],
+  "cSpell.ignorePaths": ["dist/**", "node_modules/**"],
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.configPath": "./.prettierrc",
+  "prettier.requireConfig": true
 }
