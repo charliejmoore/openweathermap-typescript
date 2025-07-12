@@ -1,45 +1,54 @@
-import { BASE_OWM_API } from '../../src/constants';
-import { getCurrentWeatherByCity } from '../../src/endpoints/getCurrentWeatherByCity';
-import { CurrentWeatherResponse } from '../../src/types/CurrentWeatherResponse';
+import { BASE_OWM_API } from '../../constants';
+import { ForecastResponse } from '../../types';
+import { getForecastByCity } from '../getForecastByCity';
 
 global.fetch = jest.fn();
-
 const mockFetch = fetch as jest.Mock;
 
-describe('getCurrentWeatherByCity', () => {
+describe('getForecastByCity', () => {
   const apiKey = 'test-api-key';
 
-  const mockResponse: CurrentWeatherResponse = {
-    coord: { lon: 0, lat: 0 },
-    weather: [],
-    base: 'stations',
-    main: {
-      temp: 280,
-      feels_like: 279,
-      temp_min: 278,
-      temp_max: 282,
-      pressure: 1012,
-      humidity: 80,
-      sea_level: 0,
-      grnd_level: 0,
-    },
-    visibility: 10000,
-    wind: {
-      speed: 1.5,
-      deg: 0,
-      gust: 0,
-    },
-    clouds: { all: 20 },
-    dt: 1234567890,
-    sys: {
+  const mockResponse: ForecastResponse = {
+    cod: '200',
+    message: 0,
+    cnt: 2,
+    list: [
+      {
+        dt: 1234567890,
+        main: {
+          temp: 280,
+          feels_like: 279,
+          temp_min: 278,
+          temp_max: 282,
+          pressure: 1012,
+          humidity: 80,
+          sea_level: 0,
+          grnd_level: 0,
+        },
+        weather: [
+          {
+            id: 800,
+            main: 'Clear',
+            description: 'clear sky',
+            icon: '01d',
+          },
+        ],
+        clouds: { all: 0 },
+        wind: { speed: 1.5, deg: 90 },
+        visibility: 10000,
+        pop: 0,
+        dt_txt: '2025-07-13 15:00:00',
+      },
+    ],
+    city: {
+      id: 2643743,
+      name: 'London',
+      coord: { lat: 51.5074, lon: -0.1278 },
       country: 'GB',
+      timezone: 0,
       sunrise: 123456789,
       sunset: 123456999,
     },
-    timezone: 0,
-    id: 123456,
-    name: 'Test City',
-    cod: 200,
   };
 
   beforeEach(() => {
@@ -52,10 +61,10 @@ describe('getCurrentWeatherByCity', () => {
       json: () => Promise.resolve(mockResponse),
     });
 
-    await getCurrentWeatherByCity('London', apiKey);
+    await getForecastByCity('London', apiKey);
 
     expect(mockFetch).toHaveBeenCalledWith(
-      `${BASE_OWM_API}/weather?q=London&appid=${apiKey}&units=standard`
+      `${BASE_OWM_API}/forecast?q=London&appid=${apiKey}&units=standard`
     );
   });
 
@@ -65,9 +74,7 @@ describe('getCurrentWeatherByCity', () => {
       json: () => Promise.resolve(mockResponse),
     });
 
-    await getCurrentWeatherByCity('Paris', apiKey, undefined, {
-      country: 'FR',
-    });
+    await getForecastByCity('Paris', apiKey, undefined, { country: 'FR' });
 
     expect(mockFetch).toHaveBeenCalledWith(
       expect.stringContaining('q=Paris%2CFR')
@@ -80,7 +87,7 @@ describe('getCurrentWeatherByCity', () => {
       json: () => Promise.resolve(mockResponse),
     });
 
-    await getCurrentWeatherByCity('Berlin', apiKey, undefined, {
+    await getForecastByCity('Berlin', apiKey, undefined, {
       units: 'metric',
       lang: 'de',
     });
@@ -90,32 +97,29 @@ describe('getCurrentWeatherByCity', () => {
     expect(calledUrl).toContain('lang=de');
   });
 
-  it('uses custom base URL when provided', async () => {
-    const customBaseUrl = 'https://custom.api';
+  it('uses custom base URL', async () => {
+    const customUrl = 'https://custom.api';
     mockFetch.mockResolvedValueOnce({
       ok: true,
       json: () => Promise.resolve(mockResponse),
     });
 
-    await getCurrentWeatherByCity('Tokyo', apiKey, customBaseUrl);
+    await getForecastByCity('Rome', apiKey, customUrl);
 
-    expect(mockFetch).toHaveBeenCalledWith(
-      expect.stringContaining(`${customBaseUrl}/weather`)
-    );
+    expect(mockFetch).toHaveBeenCalledWith(expect.stringContaining(customUrl));
   });
 
-  it('returns parsed JSON response', async () => {
+  it('returns the parsed response', async () => {
     mockFetch.mockResolvedValueOnce({
       ok: true,
       json: () => Promise.resolve(mockResponse),
     });
 
-    const result = await getCurrentWeatherByCity('New York', apiKey);
-
+    const result = await getForecastByCity('Madrid', apiKey);
     expect(result).toEqual(mockResponse);
   });
 
-  it('throws error on non-OK response with JSON error body', async () => {
+  it('throws error on non-OK response with JSON body', async () => {
     const errorBody = { message: 'City not found' };
     mockFetch.mockResolvedValueOnce({
       ok: false,
@@ -124,7 +128,7 @@ describe('getCurrentWeatherByCity', () => {
       text: () => Promise.resolve(JSON.stringify(errorBody)),
     });
 
-    await expect(getCurrentWeatherByCity('FakeCity', apiKey)).rejects.toThrow(
+    await expect(getForecastByCity('FakeCity', apiKey)).rejects.toThrow(
       /City not found/
     );
   });
@@ -134,11 +138,11 @@ describe('getCurrentWeatherByCity', () => {
       ok: false,
       status: 500,
       statusText: 'Internal Server Error',
-      text: () => Promise.resolve('Server exploded'),
+      text: () => Promise.resolve('Something went wrong'),
     });
 
-    await expect(getCurrentWeatherByCity('OopsCity', apiKey)).rejects.toThrow(
-      /Server exploded/
+    await expect(getForecastByCity('OopsCity', apiKey)).rejects.toThrow(
+      /Something went wrong/
     );
   });
 });

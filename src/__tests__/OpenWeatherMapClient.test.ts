@@ -1,12 +1,12 @@
-import { BASE_OWM_API } from '../src/constants';
+import { BASE_OWM_API } from '../constants';
 import {
   getCurrentWeatherByCity,
   GetCurrentWeatherByCityOptions,
-} from '../src/endpoints/getCurrentWeatherByCity';
-import { createOpenWeatherMapClient } from '../src/OpenWeatherMapClient';
-import { CurrentWeatherResponse } from '../src/types/CurrentWeatherResponse';
+} from '../endpoints/getCurrentWeatherByCity';
+import { createOpenWeatherMapClient } from '../OpenWeatherMapClient';
+import { CurrentWeatherResponse } from '../types/CurrentWeatherResponse';
 
-jest.mock('../src/endpoints/getCurrentWeatherByCity', () => ({
+jest.mock('../endpoints/getCurrentWeatherByCity', () => ({
   getCurrentWeatherByCity: jest.fn(),
 }));
 

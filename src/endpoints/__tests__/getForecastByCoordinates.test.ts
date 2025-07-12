@@ -1,6 +1,6 @@
-import { getForecastByCoordinates } from '../../src/endpoints/getForecastByCoordinates';
-import { BASE_OWM_API } from '../../src/constants';
-import { ForecastResponse } from '../../src/types/ForecastResponse';
+import { BASE_OWM_API } from '../../constants';
+import { ForecastResponse } from '../../types';
+import { getForecastByCoordinates } from '../getForecastByCoordinates';
 
 global.fetch = jest.fn();
 const mockFetch = fetch as jest.Mock;

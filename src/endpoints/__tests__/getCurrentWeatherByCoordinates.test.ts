@@ -1,6 +1,6 @@
-import { BASE_OWM_API } from '../../src/constants';
-import { CurrentWeatherResponse } from '../../src/types/CurrentWeatherResponse';
-import { getCurrentWeatherByCoordinates } from '../../src/endpoints/getCurrentWeatherByCoordinates';
+import { BASE_OWM_API } from '../../constants';
+import { CurrentWeatherResponse } from '../../types';
+import { getCurrentWeatherByCoordinates } from '../getCurrentWeatherByCoordinates';
 
 global.fetch = jest.fn();
 const mockFetch = fetch as jest.Mock;

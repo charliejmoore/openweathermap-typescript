@@ -1,6 +1,6 @@
-import { getCurrentAirPollutionByCoordinates } from '../../src/endpoints/getCurrentAirPollutionByCoordinates';
-import { BASE_OWM_API } from '../../src/constants';
-import { AirPollutionResponse } from '../../src/types/AirPollutionResponse';
+import { BASE_OWM_API } from '../../constants';
+import { AirPollutionResponse } from '../../types';
+import { getCurrentAirPollutionByCoordinates } from '../getCurrentAirPollutionByCoordinates';
 
 global.fetch = jest.fn();
 const mockFetch = fetch as jest.Mock;
