@@ -119,7 +119,9 @@ export function createOpenWeatherMapClient({
   apiKey,
   baseUrl,
 }: CreateOpenWeatherMapClientConfig): OpenWeatherMapClient {
-  if (!apiKey) throw new Error('API key is required');
+  if (!apiKey) {
+    throw new Error('API key is required');
+  }
   baseUrl = baseUrl || BASE_OWM_API;
 
   return {

@@ -12,7 +12,7 @@ export function groupForecastByDay(
   return forecastList.reduce<Record<string, ForecastItem[]>>(
     (grouped, item) => {
       // Use dt_txt if available; fallback to timestamp
-      const date =
+      const date: string =
         item.dt_txt?.split(' ')[0] ??
         new Date(item.dt * 1000).toISOString().split('T')[0];
 

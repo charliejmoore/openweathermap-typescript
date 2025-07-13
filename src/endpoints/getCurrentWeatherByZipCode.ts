@@ -41,18 +41,18 @@ export async function getCurrentWeatherByZipCode(
   }
 
   const url = `${baseUrl}/weather?${params.toString()}`;
-  const response = await fetch(url);
+  const res = await fetch(url);
 
-  if (!response.ok) {
-    let errorText = await response.text();
+  if (!res.ok) {
+    let errorText = await res.text();
     try {
       const errorObj = JSON.parse(errorText);
       errorText = errorObj.message || errorText;
     } catch {}
     throw new Error(
-      `OpenWeatherMap error: ${response.status} ${response.statusText} - ${errorText}`
+      `OpenWeatherMap error: ${res.status} ${res.statusText} - ${errorText}`
     );
   }
 
-  return response.json();
+  return res.json();
 }
