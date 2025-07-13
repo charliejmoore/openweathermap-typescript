@@ -40,6 +40,9 @@ describe('getForecastByCoordinates', () => {
         visibility: 10000,
         pop: 0.36,
         dt_txt: '2025-07-14 12:00:00',
+        sys: {
+          pod: 'n',
+        },
       },
     ],
     city: {

@@ -38,6 +38,9 @@ describe('getForecastByCity', () => {
         visibility: 10000,
         pop: 0,
         dt_txt: '2025-07-13 15:00:00',
+        sys: {
+          pod: 'n',
+        },
       },
     ],
     city: {
