@@ -25,34 +25,81 @@ export interface CreateOpenWeatherMapClientConfig {
   baseUrl?: string;
 }
 
+/**
+ * Interface for interacting with OpenWeatherMap API endpoints.
+ */
 export interface OpenWeatherMapClient {
+  /**
+   * Fetches current weather data for a given city name.
+   *
+   * @param {string} city - The name of the city (e.g., "London").
+   * @param {GetCurrentWeatherByCityOptions} [options] - Optional query parameters such as units, language, or country code.
+   * @returns {Promise<CurrentWeatherResponse>} A promise resolving to current weather data for the specified city.
+   */
   getCurrentWeatherByCity(
     city: string,
     options?: GetCurrentWeatherByCityOptions
   ): Promise<CurrentWeatherResponse>;
 
+  /**
+   * Fetches current weather data by geographic coordinates.
+   *
+   * @param {number} latitude - The latitude of the location.
+   * @param {number} longitude - The longitude of the location.
+   * @param {GetCurrentWeatherByCoordinatesOptions} [options] - Optional query parameters such as units or language.
+   * @returns {Promise<CurrentWeatherResponse>} A promise resolving to current weather data for the specified coordinates.
+   */
   getCurrentWeatherByCoordinates(
     latitude: number,
     longitude: number,
     options?: GetCurrentWeatherByCoordinatesOptions
   ): Promise<CurrentWeatherResponse>;
 
+  /**
+   * Fetches 5-day weather forecast by city name.
+   *
+   * @param {string} city - The name of the city (e.g., "Paris").
+   * @param {GetForecastByCityOptions} [options] - Optional query parameters such as units, language, or country code.
+   * @returns {Promise<ForecastResponse>} A promise resolving to 5-day forecast data for the specified city.
+   */
   getForecastByCity(
     city: string,
     options?: GetForecastByCityOptions
   ): Promise<ForecastResponse>;
 
+  /**
+   * Fetches 5-day weather forecast by geographic coordinates.
+   *
+   * @param {number} latitude - The latitude of the location.
+   * @param {number} longitude - The longitude of the location.
+   * @param {GetForecastByCoordinatesOptions} [options] - Optional query parameters such as units or language.
+   * @returns {Promise<ForecastResponse>} A promise resolving to 5-day forecast data for the specified coordinates.
+   */
   getForecastByCoordinates(
     latitude: number,
     longitude: number,
     options?: GetForecastByCoordinatesOptions
   ): Promise<ForecastResponse>;
 
+  /**
+   * Fetches current weather data by ZIP/postal code.
+   *
+   * @param {string | number} zipCode - The ZIP or postal code (e.g., "90210").
+   * @param {GetCurrentWeatherByZipCodeOptions} [options] - Optional query parameters including country code, units, or language.
+   * @returns {Promise<CurrentWeatherResponse>} A promise resolving to current weather data for the specified ZIP code.
+   */
   getCurrentWeatherByZipCode(
     zipCode: string | number,
     options?: GetCurrentWeatherByZipCodeOptions
   ): Promise<CurrentWeatherResponse>;
 
+  /**
+   * Fetches current air pollution data for a geographic location.
+   *
+   * @param {number} latitude - The latitude of the location.
+   * @param {number} longitude - The longitude of the location.
+   * @returns {Promise<AirPollutionResponse>} A promise resolving to current air pollution data.
+   */
   getCurrentAirPollutionByCoordinates(
     latitude: number,
     longitude: number
