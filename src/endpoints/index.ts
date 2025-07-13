@@ -18,7 +18,4 @@ export {
   getCurrentWeatherByZipCode,
   GetCurrentWeatherByZipCodeOptions,
 } from './getCurrentWeatherByZipCode';
-export {
-  getCurrentAirPollutionByCoordinates,
-  GetCurrentAirPollutionByCoordinatesOptions,
-} from './getCurrentAirPollutionByCoordinates';
+export { getCurrentAirPollutionByCoordinates } from './getCurrentAirPollutionByCoordinates';

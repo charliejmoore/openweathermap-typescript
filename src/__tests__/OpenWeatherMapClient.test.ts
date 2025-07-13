@@ -141,10 +141,7 @@ describe('createOpenWeatherMapClient', () => {
     await client.getForecastByCoordinates(51.5, -0.1, { units: 'imperial' });
     await client.getCurrentWeatherByCoordinates(40.7, -74);
     await client.getCurrentWeatherByZipCode('90210', { countryCode: 'US' });
-    await client.getCurrentAirPollutionByCoordinates({
-      latitude: 35,
-      longitude: 139,
-    });
+    await client.getCurrentAirPollutionByCoordinates(35, 139);
 
     expect(mockedGetCurrentWeatherByCity).toHaveBeenCalledWith(
       'Berlin',
@@ -179,7 +176,8 @@ describe('createOpenWeatherMapClient', () => {
       { countryCode: 'US' }
     );
     expect(mockedGetAirPollutionByCoordinates).toHaveBeenCalledWith(
-      { latitude: 35, longitude: 139 },
+      35,
+      139,
       'abc123',
       BASE_OWM_API
     );

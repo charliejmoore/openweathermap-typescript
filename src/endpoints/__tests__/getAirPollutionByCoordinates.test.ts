@@ -40,7 +40,7 @@ describe('getCurrentAirPollutionByCoordinates', () => {
       json: () => Promise.resolve(mockResponse),
     });
 
-    await getCurrentAirPollutionByCoordinates({ latitude, longitude }, apiKey);
+    await getCurrentAirPollutionByCoordinates(latitude, longitude, apiKey);
 
     expect(mockFetch).toHaveBeenCalledWith(
       `${BASE_OWM_API}/air_pollution?lat=40.7128&lon=-74.006&appid=${apiKey}`
@@ -55,7 +55,8 @@ describe('getCurrentAirPollutionByCoordinates', () => {
     });
 
     await getCurrentAirPollutionByCoordinates(
-      { latitude, longitude },
+      latitude,
+      longitude,
       apiKey,
       customUrl
     );
@@ -70,7 +71,8 @@ describe('getCurrentAirPollutionByCoordinates', () => {
     });
 
     const result = await getCurrentAirPollutionByCoordinates(
-      { latitude, longitude },
+      latitude,
+      longitude,
       apiKey
     );
     expect(result).toEqual(mockResponse);
@@ -86,7 +88,7 @@ describe('getCurrentAirPollutionByCoordinates', () => {
     });
 
     await expect(
-      getCurrentAirPollutionByCoordinates({ latitude, longitude }, apiKey)
+      getCurrentAirPollutionByCoordinates(latitude, longitude, apiKey)
     ).rejects.toThrow(/Invalid location/);
   });
 
@@ -99,7 +101,7 @@ describe('getCurrentAirPollutionByCoordinates', () => {
     });
 
     await expect(
-      getCurrentAirPollutionByCoordinates({ latitude, longitude }, apiKey)
+      getCurrentAirPollutionByCoordinates(latitude, longitude, apiKey)
     ).rejects.toThrow(/Server failed/);
   });
 });
