@@ -3,10 +3,7 @@ import { getCurrentWeatherByCity } from '../endpoints/getCurrentWeatherByCity';
 import { getForecastByCity } from '../endpoints/getForecastByCity';
 import { getForecastByCoordinates } from '../endpoints/getForecastByCoordinates';
 import { getCurrentWeatherByCoordinates } from '../endpoints/getCurrentWeatherByCoordinates';
-import {
-  getCurrentWeatherByZipCode,
-  GetCurrentWeatherByZipCodeOptions,
-} from '../endpoints/getCurrentWeatherByZipCode';
+import { getCurrentWeatherByZipCode } from '../endpoints/getCurrentWeatherByZipCode';
 import { getCurrentAirPollutionByCoordinates } from '../endpoints/getCurrentAirPollutionByCoordinates';
 import { createOpenWeatherMapClient } from '../OpenWeatherMapClient';
 import { CurrentWeatherResponse } from '../types/CurrentWeatherResponse';
