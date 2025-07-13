@@ -1,0 +1,1 @@
+export { groupForecastByDay } from './groupForecastByDay';

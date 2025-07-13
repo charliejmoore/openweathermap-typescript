@@ -15,6 +15,9 @@ A [TypeScript](https://www.typescriptlang.org/) wrapper for the [OpenWeather API
 - `getForecastByCity`
 - `getForecastByCoordinates`
 
+## Utilities
+- `groupForecastByDay`
+
 ## Running This Code Locally
 - Download the repo
 - Configure your environment variables (see below) so your API key is hooked up.
