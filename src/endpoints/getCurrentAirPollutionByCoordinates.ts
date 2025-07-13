@@ -4,7 +4,7 @@ import { AirPollutionResponse } from '../types/AirPollutionResponse';
 /**
  * Options for fetching air pollution data by coordinates.
  */
-export interface getCurrentAirPollutionByCoordinatesOptions {
+export interface GetCurrentAirPollutionByCoordinatesOptions {
   /** The latitude of the location. */
   latitude: number;
   /** The longitude of the location. */
@@ -13,7 +13,7 @@ export interface getCurrentAirPollutionByCoordinatesOptions {
 
 /**
  * Fetches air pollution data by geographic coordinates.
- * @param {getCurrentAirPollutionByCoordinatesOptions} coordinates - The geographic coordinates of the location.
+ * @param {GetCurrentAirPollutionByCoordinatesOptions} coordinates - The geographic coordinates of the location.
  * @param {number} coordinates.latitude - The latitude of the location.
  * @param {number} coordinates.longitude - The longitude of the location.
  * @param {string} apiKey - Your OpenWeatherMap API key.
@@ -22,7 +22,7 @@ export interface getCurrentAirPollutionByCoordinatesOptions {
  * @throws {Error} If OpenWeatherMap API returns an error response.
  */
 export async function getCurrentAirPollutionByCoordinates(
-  coordinates: getCurrentAirPollutionByCoordinatesOptions,
+  coordinates: GetCurrentAirPollutionByCoordinatesOptions,
   apiKey: string,
   baseUrl = BASE_OWM_API
 ): Promise<AirPollutionResponse> {

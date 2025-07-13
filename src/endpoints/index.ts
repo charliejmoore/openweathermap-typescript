@@ -20,5 +20,5 @@ export {
 } from './getCurrentWeatherByZipCode';
 export {
   getCurrentAirPollutionByCoordinates,
-  getCurrentAirPollutionByCoordinatesOptions,
+  GetCurrentAirPollutionByCoordinatesOptions,
 } from './getCurrentAirPollutionByCoordinates';

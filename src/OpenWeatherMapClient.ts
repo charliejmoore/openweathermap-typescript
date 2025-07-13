@@ -16,7 +16,7 @@ import {
   getCurrentWeatherByZipCode,
   GetCurrentWeatherByZipCodeOptions,
   getCurrentAirPollutionByCoordinates,
-  getCurrentAirPollutionByCoordinatesOptions,
+  GetCurrentAirPollutionByCoordinatesOptions,
 } from './endpoints';
 
 export interface CreateOpenWeatherMapClientConfig {
@@ -55,7 +55,7 @@ export interface OpenWeatherMapClient {
   ): Promise<CurrentWeatherResponse>;
 
   getCurrentAirPollutionByCoordinates(
-    options: getCurrentAirPollutionByCoordinatesOptions
+    options: GetCurrentAirPollutionByCoordinatesOptions
   ): Promise<AirPollutionResponse>;
 }
 
