@@ -24,11 +24,11 @@ export interface ForecastItem {
   /** Cloudiness percentage. */
   clouds: CloudData;
   /** Wind information. */
-  wind: WindData;
+  wind?: WindData;
   /** Snow information. */
-  snow: SnowData;
+  snow?: SnowData;
   /** Rain information. */
-  rain: RainData;
+  rain?: RainData;
   /** Average visibility, metres. The maximum value of the visibility is 10km. */
   visibility: number;
   /** Probability of precipitation. The values of the parameter vary between 0 and 1, where 0 is equal to 0%, 1 is equal to 100%. */
