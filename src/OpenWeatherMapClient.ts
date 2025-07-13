@@ -123,8 +123,11 @@ export function createOpenWeatherMapClient({
   baseUrl = baseUrl || BASE_OWM_API;
 
   return {
+    /** Current Weather */
     getCurrentWeatherByCity: (city, options) =>
       getCurrentWeatherByCity(city, apiKey, baseUrl, options),
+    getCurrentWeatherByZipCode: (zipCode, options) =>
+      getCurrentWeatherByZipCode(zipCode, apiKey, baseUrl, options),
     getCurrentWeatherByCoordinates: (latitude, longitude, options) =>
       getCurrentWeatherByCoordinates(
         latitude,
@@ -133,13 +136,13 @@ export function createOpenWeatherMapClient({
         baseUrl,
         options
       ),
+    /** Air Pollution */
+    getCurrentAirPollutionByCoordinates: (latitude, longitude) =>
+      getCurrentAirPollutionByCoordinates(latitude, longitude, apiKey, baseUrl),
+    /** Forecast */
     getForecastByCity: (city, options) =>
       getForecastByCity(city, apiKey, baseUrl, options),
     getForecastByCoordinates: (latitude, longitude, options) =>
       getForecastByCoordinates(latitude, longitude, apiKey, baseUrl, options),
-    getCurrentWeatherByZipCode: (zipCode, options) =>
-      getCurrentWeatherByZipCode(zipCode, apiKey, baseUrl, options),
-    getCurrentAirPollutionByCoordinates: (latitude, longitude) =>
-      getCurrentAirPollutionByCoordinates(latitude, longitude, apiKey, baseUrl),
   };
 }
