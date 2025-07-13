@@ -9,7 +9,7 @@
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "example": "tsx example/index.ts",
-    "lint": "eslint \"src/**/*.{ts,tsx}\""
+    "lint": "eslint src"
   },
   "files": [
     "dist",

@@ -51,7 +51,9 @@ export async function getCurrentWeatherByCoordinates(
     try {
       const errorObj = JSON.parse(errorText);
       errorText = errorObj.message || errorText;
-    } catch {}
+    } catch {
+      // ignore JSON parse errors, use original errorText
+    }
     throw new Error(
       `OpenWeatherMap error: ${res.status} ${res.statusText} - ${errorText}`
     );

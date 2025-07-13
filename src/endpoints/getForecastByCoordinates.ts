@@ -48,7 +48,9 @@ export async function getForecastByCoordinates(
     try {
       const errorObject = JSON.parse(errorText);
       errorText = errorObject.message || errorText;
-    } catch {}
+    } catch {
+      // ignore JSON parse errors, use original errorText
+    }
     throw new Error(
       `OpenWeatherMap error: ${res.status} ${res.statusText} - ${errorText}`
     );
