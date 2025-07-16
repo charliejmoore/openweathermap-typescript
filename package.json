@@ -4,6 +4,7 @@
   "description": "A modern, type-safe OpenWeatherMap API wrapper for TypeScript/ESM",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "type": "module",
   "scripts": {
     "test": "jest",
     "test:coverage": "jest --coverage",
