@@ -1,4 +1,4 @@
-import { ForecastItem } from '../types/ForecastResponse';
+import { ForecastItem } from '../types/api-responses/ForecastResponse';
 
 /**
  * Groups forecast items by calendar day (YYYY-MM-DD) to provide a more user-friendly forecast output.

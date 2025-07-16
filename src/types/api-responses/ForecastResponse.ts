@@ -1,9 +1,9 @@
-import { RainData, SnowData } from './shared';
-import { CloudData } from './shared/CloudData';
-import { Coordinates } from './shared/Coordinates';
-import { WeatherDescriptionData } from './shared/WeatherDescriptionData';
-import { WeatherMetricsData } from './shared/WeatherMetricsData';
-import { WindData } from './shared/WindData';
+import { RainData, SnowData } from '../shared';
+import { CloudData } from '../shared/CloudData';
+import { Coordinates } from '../shared/Coordinates';
+import { WeatherDescriptionData } from '../shared/WeatherDescriptionData';
+import { WeatherMetricsData } from '../shared/WeatherMetricsData';
+import { WindData } from '../shared/WindData';
 
 export type PartOfDay =
   /** Night. */

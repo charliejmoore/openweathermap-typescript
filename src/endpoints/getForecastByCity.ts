@@ -1,5 +1,5 @@
 import { BASE_OWM_API } from '../constants';
-import { ForecastResponse } from '../types/ForecastResponse';
+import { ForecastResponse } from '../types/api-responses/ForecastResponse';
 import { WeatherUnits } from '../types/shared/WeatherUnits';
 
 /**

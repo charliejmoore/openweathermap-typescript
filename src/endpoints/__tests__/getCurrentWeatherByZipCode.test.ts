@@ -1,6 +1,6 @@
 import { getCurrentWeatherByZipCode } from '../getCurrentWeatherByZipCode';
 import { BASE_OWM_API } from '../../constants';
-import { CurrentWeatherResponse } from '../../types/CurrentWeatherResponse';
+import { CurrentWeatherResponse } from '../../types/api-responses/CurrentWeatherResponse';
 
 global.fetch = jest.fn();
 const mockFetch = fetch as jest.Mock;

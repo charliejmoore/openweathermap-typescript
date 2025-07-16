@@ -1,8 +1,8 @@
-export { CurrentWeatherResponse } from './CurrentWeatherResponse';
+export { CurrentWeatherResponse } from './api-responses/CurrentWeatherResponse';
 export {
   ForecastCity,
   ForecastItem,
   ForecastResponse,
-} from './ForecastResponse';
+} from './api-responses/ForecastResponse';
 export * from './shared';
-export { AirPollutionResponse } from './AirPollutionResponse';
+export { AirPollutionResponse } from './api-responses/AirPollutionResponse';

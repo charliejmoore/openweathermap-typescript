@@ -6,7 +6,7 @@ import { getCurrentWeatherByCoordinates } from '../endpoints/getCurrentWeatherBy
 import { getCurrentWeatherByZipCode } from '../endpoints/getCurrentWeatherByZipCode';
 import { getCurrentAirPollutionByCoordinates } from '../endpoints/getCurrentAirPollutionByCoordinates';
 import { createOpenWeatherMapClient } from '../OpenWeatherMapClient';
-import { CurrentWeatherResponse } from '../types/CurrentWeatherResponse';
+import { CurrentWeatherResponse } from '../types/api-responses/CurrentWeatherResponse';
 
 jest.mock('../endpoints/getCurrentWeatherByCity', () => ({
   getCurrentWeatherByCity: jest.fn(),

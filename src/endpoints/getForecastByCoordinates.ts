@@ -1,6 +1,6 @@
 import { BASE_OWM_API } from '../constants';
 import { WeatherUnits } from '../types/shared/WeatherUnits';
-import { ForecastResponse } from '../types/ForecastResponse';
+import { ForecastResponse } from '../types/api-responses/ForecastResponse';
 
 /**
  * Options for fetching forecast by geographic coordinates.

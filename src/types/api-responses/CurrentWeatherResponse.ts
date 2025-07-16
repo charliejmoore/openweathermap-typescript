@@ -4,7 +4,7 @@ import {
   WindData,
   WeatherMetricsData,
   WeatherDescriptionData,
-} from './shared';
+} from '../shared';
 
 export interface SysData {
   /** Country code (GB, JP etc.). */

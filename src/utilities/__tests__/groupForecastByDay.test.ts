@@ -1,5 +1,5 @@
 import { groupForecastByDay } from '../groupForecastByDay';
-import { ForecastItem } from '../../types/ForecastResponse';
+import { ForecastItem } from '../../types/api-responses/ForecastResponse';
 
 describe('groupForecastByDay', () => {
   const forecastList: ForecastItem[] = [
