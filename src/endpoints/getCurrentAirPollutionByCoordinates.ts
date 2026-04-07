@@ -1,5 +1,5 @@
 import { BASE_OWM_API } from '../constants';
-import { AirPollutionResponse } from '../types/AirPollutionResponse';
+import { AirPollutionResponse } from '../types';
 
 /**
  * Fetches air pollution data by geographic coordinates.
