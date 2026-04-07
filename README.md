@@ -2,6 +2,8 @@
 
 A modern, fully-typed [OpenWeather API](https://openweathermap.org/api) client built with [TypeScript](https://www.typescriptlang.org/). Supports current weather, forecast, air pollution, and more. Includes utilities.
 
+[![CI](https://github.com/charliejmoore/openweathermap-typescript/actions/workflows/ci.yml/badge.svg)](https://github.com/charliejmoore/openweathermap-typescript/actions/workflows/ci.yml)
+
 ## 🚀 Installation
 TODO
 
