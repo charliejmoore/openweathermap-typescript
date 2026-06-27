@@ -12,7 +12,7 @@ TODO: not published yet so install locally only.
 ## 🛠️ Usage
 
 ```ts
-import { createOpenWeatherMapClient } from './OpenWeatherMapClient'; // TODO
+import { createOpenWeatherMapClient } from './OpenWeatherMapClient';
 
 const client = createOpenWeatherMapClient({
   apiKey: 'your-api-key',
